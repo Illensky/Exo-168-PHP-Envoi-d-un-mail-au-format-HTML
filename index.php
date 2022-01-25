@@ -9,7 +9,7 @@
 
 $to = [
     'j.conan@fondationface.org',
-    ...
+    'alexis.laroche.02240@gmail.com'
 ];
 
 $html = '
@@ -19,9 +19,22 @@ $html = '
         </head>
         <body>
             <div>
-                <!-- Vos actualités ici -->
+                Un texte court de newsletter.
             </div>
         </body>
     </html>
 ';
 
+$headers = [
+    'MIME-Version' => '1.0',
+    'Content-type' => 'text/html; charset=iso-8859-1'
+];
+
+foreach ($to as $mail) {
+    if (mail($mail, 'test html', $html, $headers)) {
+        echo $mail." => Message envoyé<br>";
+    }
+    else {
+        echo $mail." => Message non envoyé<br>";
+    }
+}
